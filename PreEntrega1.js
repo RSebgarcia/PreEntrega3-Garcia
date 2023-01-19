@@ -8,9 +8,11 @@ let RNG
 ///Menu principal, te deja salir del programa e ingresar al combate, debe repetirse las veces que el usuario lo desee.
 function menuPrincipal() {
     alert("¡Bienvenido al simulador de combate!")
-    menu = parseInt(prompt("Elija una opcion: \n 1- Luchar \n 2- Salir "))
+    menu = parseInt(prompt("Elija una opcion: \n 1- Elegir Pokemon y luchar \n 2- Salir "))
     switch (menu) {
         case 1:
+            misPokemons = elegirPokemonAliado()
+            pokemonEnemigo = elegirPokemonEnemigo()
             menuCombate()
             break
         case 2:
@@ -18,44 +20,46 @@ function menuPrincipal() {
             break
         default:
             alert("La opcion seleccionada no es valida.")
+            menuPrincipal()
     }
 }
 
 ///contador de vida
-function showStats() {
-    show = "Oponente: \n" + vidaOponente + " puntos de vida \n \n \n Tu: \n" + vidaJugador + " puntos de vida"
-    alert(show)
-}
-///para hacer daño al enemigo
-function doDamage(vida, danio) {
-    vidaOponente = vida - danio
-    return vidaOponente
-}
-/// para recibir daño
-function takeDamage(vida, danio) {
-    vidaJugador = vida - danio
-    return vidaJugador
-} 
-///para curar
-function Heal(vida, curacion) {
-    if(vida < 81){
-    alert("Haz utilizado una pocion magica, recuperas 20 puntos de vida")
-    vidaJugador = vida + curacion
-    return vidaJugador
-}
-else{alert("No puedes curarte mas")}
-}   
-giveRandom()
+// function showStats() {
+//     show = "Oponente: \n" + vidaOponente + " puntos de vida \n \n \n Tu: \n" + vidaJugador + " puntos de vida"
+//     alert(show)
+// }
+// FUNCIONES VIEJAS DE COMBATE
+// ///para hacer daño al enemigo
+// function doDamage(vida, danio) {
+//     vidaOponente = vida - danio
+//     return vidaOponente
+// }
+// /// para recibir daño
+// function takeDamage(vida, danio) {
+//     vidaJugador = vida - danio
+//     return vidaJugador
+// } 
+// ///para curar
+// function Heal(vida, curacion) {
+//     if(vida < 81){
+//     alert("Haz utilizado una pocion magica, recuperas 20 puntos de vida")
+//     vidaJugador = vida + curacion
+//     return vidaJugador
+// }
+// else{alert("No puedes curarte mas")}
+// }   
+// giveRandom()
 
-function giveRandom(max) {
-    let random
-    random = Math.floor(Math.random() * max)
-    return random
-}
+// function giveRandom(max) {
+//     let random
+//     random = Math.floor(Math.random() * max)
+//     return random
+// }
 
 function menuCombate() { ///Te debe dejar tomar acciones en el combate, agregr RNG cuando enseñen math.random
     do {
-        acciones = parseInt(prompt("Elije una accion: \n 1- Atacar \n 2- Bloquear \n 3- Usar una pocion"))
+        acciones = parseInt(prompt("Elije una accion: \n 1- Atacar \n 2- Bloquear \n 3- Usar una pocion \n4-Salir"))
 
         switch (acciones) {
             case 1:
@@ -69,6 +73,9 @@ function menuCombate() { ///Te debe dejar tomar acciones en el combate, agregr R
                 
                 Heal(vidaJugador, 20)
                 showStats()
+                break
+            case 4:
+                menuPrincipal()
                 break
             default:
                 alert("Haz perdido tu oportunidad, el oponente logra golpearte y pierdes 30 puntos de vida")

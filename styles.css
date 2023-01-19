@@ -1,0 +1,8 @@
+
+a img{
+    width: 100px;
+    height: 140px;
+}
+.navbar-expand-md .navbar-nav .nav-link{
+    padding-right: initial;
+}
