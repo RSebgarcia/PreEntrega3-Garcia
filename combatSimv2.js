@@ -160,7 +160,6 @@ function menuPrincipal() {
 function menuCombate() { ///Te debe dejar tomar acciones en el combate, 
     do {
         acciones = parseInt(prompt(`Elije una accion: \n1- Atacar \n2-Usar una pocion \n3-Ver stats \n4-Escapar`))
-
         switch (acciones) {
             case 1:
                 combate()

@@ -11,8 +11,6 @@ function menuPrincipal() {
     menu = parseInt(prompt("Elija una opcion: \n 1- Elegir Pokemon y luchar \n 2- Salir "))
     switch (menu) {
         case 1:
-            misPokemons = elegirPokemonAliado()
-            pokemonEnemigo = elegirPokemonEnemigo()
             menuCombate()
             break
         case 2:
@@ -24,38 +22,38 @@ function menuPrincipal() {
     }
 }
 
-///contador de vida
-// function showStats() {
-//     show = "Oponente: \n" + vidaOponente + " puntos de vida \n \n \n Tu: \n" + vidaJugador + " puntos de vida"
-//     alert(show)
-// }
+// /contador de vida
+function showStats() {
+    show = "Oponente: \n" + vidaOponente + " puntos de vida \n \n \n Tu: \n" + vidaJugador + " puntos de vida"
+    alert(show)
+}
 // FUNCIONES VIEJAS DE COMBATE
-// ///para hacer daño al enemigo
-// function doDamage(vida, danio) {
-//     vidaOponente = vida - danio
-//     return vidaOponente
-// }
-// /// para recibir daño
-// function takeDamage(vida, danio) {
-//     vidaJugador = vida - danio
-//     return vidaJugador
-// } 
-// ///para curar
-// function Heal(vida, curacion) {
-//     if(vida < 81){
-//     alert("Haz utilizado una pocion magica, recuperas 20 puntos de vida")
-//     vidaJugador = vida + curacion
-//     return vidaJugador
-// }
-// else{alert("No puedes curarte mas")}
-// }   
-// giveRandom()
+///para hacer daño al enemigo
+function doDamage(vida, danio) {
+    vidaOponente = vida - danio
+    return vidaOponente
+}
+/// para recibir daño
+function takeDamage(vida, danio) {
+    vidaJugador = vida - danio
+    return vidaJugador
+} 
+///para curar
+function Heal(vida, curacion) {
+    if(vida < 81){
+    alert("Haz utilizado una pocion magica, recuperas 20 puntos de vida")
+    vidaJugador = vida + curacion
+    return vidaJugador
+}
+else{alert("No puedes curarte mas")}
+}   
+giveRandom()
 
-// function giveRandom(max) {
-//     let random
-//     random = Math.floor(Math.random() * max)
-//     return random
-// }
+function giveRandom(max) {
+    let random
+    random = Math.floor(Math.random() * max)
+    return random
+}
 
 function menuCombate() { ///Te debe dejar tomar acciones en el combate, agregr RNG cuando enseñen math.random
     do {
