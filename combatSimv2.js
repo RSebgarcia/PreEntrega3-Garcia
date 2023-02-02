@@ -187,14 +187,39 @@
     this.classList.toggle('active')
     }
 
+    function randomInt(min, max)
+    {
+    return Math.round(Math.random() * (max- min) + min )
+}
 
+function battleLogFunc(string){
+    textoBatalla.innerText = ''
+    battleLog.push (string)
 
+    textoBatalla.innerText = battleLog.join('\n')
+    textoBatalla.scrollTo({
+        top: textoBatalla.scrollHeight,
+        behavior: 'smooth'
+    });
+}
+
+function battleAuxFunc(string){
+    infoAux.innerText = ''
+    battleAux.unshift (string)
+
+    infoAux.innerText = battleAux.join('\n')
+    infoAux.scrollTo({
+        top: textoBatalla.scrollHeight,
+        behavior:'smooth'
+    })
+}
+//Combat Funcitons
 function ataqueNormal(hitChance,victima ,victimario) {
     let dado = randomInt(0, 100);
     console.log(`resultado del dado: ` + dado);
     if (dado > hitChance) {
     battleLogFunc(`${victimario[0].nombre } genera un ataque de tipo Fisico, no pierde puntos de energia`);
-    recibirAtaque('25','50', victima,)
+    recibirAtaque(25,50, victima,)
     } else {
     let dado2 = randomInt(0, 100);
     console.log(`resultado del dado: ` + dado2);
@@ -222,7 +247,7 @@ function ataqueEspecial(hitChance, victima, victimario) {
         let energiaPerdida = randomInt(50, 80);
         battleLogFunc(`${victimario[0].nombre} genera un ataque de tipo ${victimario[0].tipo} Pierde ${energiaPerdida} puntos de energia`);
         victimario[0].energia = victimario[0].energia - energiaPerdida;
-        recibirAtaque('25','50', victima)
+        recibirAtaque(40,80, victima)
     } else {
         battleLogFunc(`¡El ataque ha fallado!`);
     }
@@ -235,44 +260,10 @@ function recibirAtaque(min, max,victima ) {
 }
 
 
-function randomInt(min, max)
-    {
-    return Math.round(Math.random() * (max- min) + min )
-}
-
-function battleLogFunc(string){
-    textoBatalla.innerText = ''
-    battleLog.push (string)
-
-    textoBatalla.innerText = battleLog.join('\n')
-    textoBatalla.scrollTo({
-        top: textoBatalla.scrollHeight,
-        behavior: 'smooth'
-    });
-}
-
-function battleAuxFunc(string){
-    infoAux.innerText = ''
-    battleAux.unshift (string)
-
-    infoAux.innerText = battleAux.join('\n')
-    infoAux.scrollTo({
-        top: textoBatalla.scrollHeight,
-        behavior:'smooth'
-    })
-}
 
 
-function listarPokemons(listadoDePokemons) {
-    return listadoDePokemons.map((listadoDePokemons) => { return `\n ${listadoDePokemons.nombre}`; })
-}
 
 
-function datosPokemon (arrayPokemons){
-    arrayPokemons.forEach(arrayPokemons => {
-        alert(`Estadisticas del Pokemon: \n\n\nNombre: ${arrayPokemons.nombre} \nVida: ${arrayPokemons.vida} \nTipo: ${arrayPokemons.tipo} \nEnergia: ${arrayPokemons.energia}`)
-    });
-}
 
 
 
